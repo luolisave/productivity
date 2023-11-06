@@ -4,7 +4,7 @@
     "description": "Increase productivity for developer",
     "version": "1.0",
     "action": {
-      "default_popup": "dist/index.html",
+      "default_popup": "public_html/index.html",
       "default_icon": "productivity.png"
     }
   }
