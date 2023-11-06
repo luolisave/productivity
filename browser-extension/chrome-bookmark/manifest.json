@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Li's Additional Bookmark",
+    "description": "Able to select different bookmark groups, and easy to config api server.",
+    "version": "1.0",
+    "action": {
+      "default_popup": "dist/index.html",
+      "default_icon": "productivity.png"
+    }
+  }
