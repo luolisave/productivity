@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import "./tests.css";
 
 function Tests() {
@@ -8,10 +8,10 @@ function Tests() {
 
       <ul>
         <li>
-          <Link to="/tests/test1">Test 1</Link>
+          <NavLink to="/tests/test1">Test 1</NavLink>
         </li>
         <li>
-          <Link to="/tests/list1">List 1</Link>
+          <NavLink to="/tests/list1">List 1</NavLink>
         </li>
       </ul>
 

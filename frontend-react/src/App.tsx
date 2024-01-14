@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, NavLink } from "react-router-dom";
 
 import "./App.css";
 
@@ -15,6 +15,10 @@ import Test1 from "./components/tests/test1/test1";
 // https://www.youtube.com/watch?v=SqcY0GlETPk
 // npm create vite@4.1.0
 
+function navActiveColor(navObj: { isActive: boolean }) {
+  return navObj.isActive ? { color: "red" } : {};
+}
+
 // https://youtu.be/Ul3y1LXxzdU?si=Z8SbPKCa9BUewscc&t=980  // not found page
 function App() {
   return (
@@ -22,23 +26,24 @@ function App() {
       <nav className="navbar fixed-bottom navbar-light bg-light">
         <div className="container-fluid">
           <span className="navbar-brand">
-            <Link to="/">Home</Link>
+            {/* <Link style={navActiveColor} to="/"> */}
+            <NavLink to="/">Home</NavLink>
           </span>
           <span className="navbar-brand">
-            <Link to="/bookmarks">Bookmarks</Link>
+            <NavLink to="/bookmarks">Bookmarks</NavLink>
           </span>
           <span className="navbar-brand">
-            <Link to="/notes">Notes</Link>
+            <NavLink to="/notes">Notes</NavLink>
           </span>
           <span className="navbar-brand">
             Note+
-            {/* <Link to="/bookmarks">Bookmarks</Link> */}
+            {/* <NavLink to="/bookmarks">Bookmarks</NavLink> */}
           </span>
           <span className="navbar-brand">
-            <Link to="/tests">Tests</Link>
+            <NavLink to="/tests">Tests</NavLink>
           </span>
           <span className="navbar-brand">
-            <Link to="/settings">Settings</Link>
+            <NavLink to="/settings">Settings</NavLink>
           </span>
         </div>
       </nav>

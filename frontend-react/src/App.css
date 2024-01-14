@@ -1,3 +1,6 @@
+nav.navbar a.active, ul a.active {
+  color: red;
+} 
 .message-wrapper {
   width: 1000px;
   border: 1px solid red;
