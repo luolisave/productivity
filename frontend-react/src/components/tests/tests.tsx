@@ -16,7 +16,9 @@ function Tests() {
       </ul>
 
       <div className="test-outlet">
-        <Outlet />
+        <Outlet
+          context={{ hello: "my route context data for inner componments." }}
+        />
       </div>
     </>
   );
