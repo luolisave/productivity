@@ -1,19 +1,23 @@
-import ListGroup from "../ListGroup";
+import { Link, Outlet } from "react-router-dom";
+import "./test.css";
 
 function Tests() {
-  let items = ["New York", "Tokyo", "Londo", "Paris", "Hongkong"];
-
   return (
     <>
       <h1>Tests</h1>
 
-      <ListGroup
-        items={items}
-        heading={"Cities"}
-        onSelectItem={function (item: string): void {
-          console.log(item);
-        }}
-      ></ListGroup>
+      <ul>
+        <li>
+          <Link to="/tests/test1">Test 1</Link>
+        </li>
+        <li>
+          <Link to="/tests/list1">List 1</Link>
+        </li>
+      </ul>
+
+      <div className="test-outlet">
+        <Outlet />
+      </div>
     </>
   );
 }

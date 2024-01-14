@@ -9,6 +9,8 @@ import Tests from "./components/tests/tests";
 import Settings from "./components/settings/settings";
 import NotFound from "./components/NotFound/NotFound.js";
 import Note from "./components/note/note";
+import List1 from "./components/tests/list1/list1";
+import Test1 from "./components/tests/test1/test1";
 
 // https://www.youtube.com/watch?v=SqcY0GlETPk
 // npm create vite@4.1.0
@@ -45,7 +47,11 @@ function App() {
         <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/note/:id" element={<Note />} />
-        <Route path="/tests" element={<Tests />} />
+        {/* <Route path="/tests" element={<Tests />} /> */}
+        <Route path="/tests" element={<Tests />}>
+          <Route path="test1" element={<Test1 />} />
+          <Route path="list1" element={<List1 />} />
+        </Route>
         <Route path="/settings" element={<Settings />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
