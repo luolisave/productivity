@@ -1,4 +1,4 @@
-import { Route, Routes, Link, NavLink } from "react-router-dom";
+import { Route, Routes, Link, NavLink, useLocation } from "react-router-dom";
 
 import "./App.css";
 
@@ -21,6 +21,7 @@ function navActiveColor(navObj: { isActive: boolean }) {
 
 // https://youtu.be/Ul3y1LXxzdU?si=Z8SbPKCa9BUewscc&t=980  // not found page
 function App() {
+  const location = useLocation(); // check NotFound.tsx
   return (
     <>
       <nav className="navbar fixed-bottom navbar-light bg-light">
@@ -47,6 +48,11 @@ function App() {
           </span>
         </div>
       </nav>
+
+      <div>
+        <h2>{location.state}</h2>
+      </div>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bookmarks" element={<Bookmarks />} />
