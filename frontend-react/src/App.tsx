@@ -49,23 +49,24 @@ function App() {
         </div>
       </nav>
 
-      <div>
-        <h2>{location.state}</h2>
+      <div className="container-fluid">
+        <div>
+          <h2>{location.state}</h2>
+        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/note/:id" element={<Note />} />
+          {/* <Route path="/tests" element={<Tests />} /> */}
+          <Route path="/tests" element={<Tests />}>
+            <Route path="test1" element={<Test1 />} />
+            <Route path="list1" element={<List1 />} />
+          </Route>
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
       </div>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path="/notes" element={<Notes />} />
-        <Route path="/note/:id" element={<Note />} />
-        {/* <Route path="/tests" element={<Tests />} /> */}
-        <Route path="/tests" element={<Tests />}>
-          <Route path="test1" element={<Test1 />} />
-          <Route path="list1" element={<List1 />} />
-        </Route>
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
     </>
   );
 }

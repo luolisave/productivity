@@ -25,7 +25,7 @@ app.get('/atom/list', async function (req, res) {
     const type = req.query.type;
     try {
       const docs = await db.findAsync({ type }); 
-      let myRecords = docs.map((item)=> item.record);
+      let myRecords = docs.map((item)=> item);
       res.send({status:1, info:'get records successfully', records: myRecords});
     } catch (error) {
       res.send({status: 0, info: "something wrong while get record from database.", type, key});
@@ -97,4 +97,4 @@ app.post('/atom', async function (req, res) {
   }
 });
 
-app.listen(6000)
+app.listen(2024)
