@@ -1,3 +1,4 @@
-{"type":"bookmark","key":"my_data_key2","data":{"aaa":"abcdefffg","bbb":"ddddddd","ddd":"ddd"},"_id":"19N4lpCCTRIJMsSc"}
-{"type":"bookmark","key":"my_data_key","data":{"aaa":"ttttt","bbb":"ttttttttttttttt","ddd":"tttttttttttttttttttttttttt"},"_id":"Eb6eMTQA76lGJ2Mo"}
-{"type":"bookmark","key":"my_data_key1","data":{"aaa":"abcdefffg","bbb":"ddddddd","ddd":"kkk"},"_id":"mxE8lNaJU5DciWMd"}
+{"type":"bookmark","key":"my_data_key","record":{"aaa":"ttttt","bbb":"ttttttttttttttt","ddd":"tttttttttttttttttttttttttt"},"_id":"bU3EPgC11c38aqju"}
+{"type":"bookmark","key":"my_data_key2","record":{"aaa":"ttttt2","bbb":"ttttttttttttttt","ddd":"tttttttttttttttttttttttttt"},"_id":"eEKjlbOH8PwAQh9E"}
+{"type":"bookmark","key":"my_data_key4","record":{"aaa":"ttttt4","bbb":"ttttttttttttttt","ddd":"tttttttttttttttttttttttttt"},"_id":"llS1u47F5nTmZnLn"}
+{"type":"bookmark","key":"my_data_key3","record":{"aaa":"ttttt3","bbb":"ttttttttttttttt","ddd":"tttttttttttttttttttttttttt"},"_id":"nValC3RJtdxpMf81"}
