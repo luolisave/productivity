@@ -1,0 +1,21 @@
+{
+  "name": "simple-storage-v6",
+  "version": "6.0.0",
+  "description": "A simple backend api server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node-dev index.js",
+    "test": "test"
+  },
+  "author": "Li Luo",
+  "license": "MIT",
+  "devDependencies": {
+    "node-dev": "^8.0.0"
+  },
+  "dependencies": {
+    "@seald-io/nedb": "^4.0.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
