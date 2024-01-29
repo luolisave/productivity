@@ -83,7 +83,7 @@ app.post('/atom', async function (req, res) {
         if (docs && docs.length) { // document already exist, update
           const { numAffected } = await db.updateAsync({ type, key }, {$set: {type, key, record: bodyDocument}}, {});
           // console.log('-----update');
-          res.send({status: 1, info: "record updated.", numAffected})
+          res.send({status: 1, info: "record updated.", numAffected, record: {type, key, record: bodyDocument}})
         } else { // create new one
           const newDoc = await db.insertAsync({type, key, record: bodyDocument});
           // console.log('-----create');  

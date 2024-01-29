@@ -38,6 +38,7 @@ function Bookmarks() {
   let [title, setTitle] = useState('');
   let [order, setOrder] = useState(0);
   let [url, setUrl] = useState('');
+  let recordKey = useRef('');
 
   useEffect(()=>{
     if (initLoadRef.current) { // onl run once when component initial loads (not second time load)
@@ -57,8 +58,12 @@ function Bookmarks() {
     console.log('saveBookmark()...');
     if(url && url !== '') {
       disableSaveBtn.current = true;
-      Axios.post(                                                    // todo: use uuid instead of this random thing.
-        `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=bk${Math.floor(Math.random() * 99999999999)}`,
+
+      const postUrl = !recordKey.current ?                              // todo: use uuid instead of this random thing.
+          `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=bk${Math.floor(Math.random() * 99999999999)}` :
+          `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${recordKey.current}`;
+      Axios.post(                                                    
+        postUrl,
         {
           title: title ? title: url,
           url,
@@ -68,11 +73,18 @@ function Bookmarks() {
           console.log(res);
           const record = res.data.record;
           setBookmarks(preMarks => {
-            return [record, ...preMarks]
+            const tmpBookmarks = preMarks.filter(item=>item.key !== record.key)
+            return [record, ...tmpBookmarks]
           });
           setTimeout(() => { // this is a trick to disable Add btn until user change anything
             disableSaveBtn.current = false;
           }, 100);
+
+          // todo: maybe use a function to do reset
+          recordKey.current = '';
+          setTitle('');
+          setOrder(0);
+          setUrl('');
       });
     } else {
       alert('URL cannot be empty!');
@@ -106,24 +118,32 @@ function Bookmarks() {
     
   }
 
+  function editBtnAction(item: Bookmark) {
+    console.log('editBtnAction()...', item)
+    setTitle(item.record.title);
+    setOrder(item.record.order);
+    setUrl(item.record.url);
+    recordKey.current = item.key;
+  }
+
   return (
     <>
       <h1>Bookmarks</h1>
 
       <div className='row mt-1 mb-1'>
         <div className='col-9'>
-        <input className='form-control' name="title" placeholder='Title' onChange={e => {setTitle(e.target.value)}} /> 
+        <input className='form-control' value={title} name="title" placeholder='Title' onChange={e => {setTitle(e.target.value)}} /> 
         </div>
         <div className='col-3'>
-        <input className='form-control'  name="order" type='number' onChange={e => {setOrder(Number(e.target.value))}} />
+        <input className='form-control' value={order}  name="order" type='number' onChange={e => {setOrder(Number(e.target.value))}} />
         </div>
       </div>
       <div className='row mt-1 mb-1'>
         <div className='col-9'>
-          <input className='form-control' name="url" placeholder='e.g. http://test.com' onChange={e => {setUrl(e.target.value)}} />
+          <input className='form-control' name="url" value={url} placeholder='e.g. http://test.com' onChange={e => {setUrl(e.target.value)}} />
         </div>
         <div className='col-3'>
-        <button className='btn btn-success' disabled={disableSaveBtn.current} onClick={saveBookmark}><i className='bi bi-bookmark-plus'></i> Add</button>
+        <button className='btn btn-success' disabled={disableSaveBtn.current} onClick={saveBookmark}><i className='bi bi-bookmark-plus'></i> {recordKey.current ? 'Update' : 'Create'}</button>
         </div>
       </div>
       <div className='mt-3 container-fluid'>
@@ -135,7 +155,7 @@ function Bookmarks() {
             </div>
             <div className='col-3'>
               <div className='bookmark-btn-div'>
-                <button className='btn btn-primary'><i className='bi bi-brush'></i></button>
+                <button className='btn btn-primary' onClick={()=>{editBtnAction(item)}}><i className='bi bi-brush'></i></button>
                 &nbsp;
                 <button className='btn btn-danger' title={item.key} onClick={()=>{deleteBookmarkRecord(item.key, item.record?.title)}}><i className='bi bi-trash'></i></button>
               </div>
