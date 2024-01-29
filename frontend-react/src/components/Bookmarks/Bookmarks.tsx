@@ -19,6 +19,9 @@ interface Bookmark{
 function Bookmarks() {
   let initLoadRef = useRef(true);
   let [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
+  let [title, setTitle] = useState('');
+  let [order, setOrder] = useState(-1);
+  let [url, setUrl] = useState('');
 
   useEffect(()=>{
     if (initLoadRef.current) { // onl run once when component initial loads (not second time load)
@@ -43,6 +46,23 @@ function Bookmarks() {
   return (
     <>
       <h1>Bookmarks</h1>
+
+      <div className='row mt-1 mb-1'>
+        <div className='col-9'>
+        <input className='form-control' name="title" placeholder='Title' onChange={e => {setTitle(e.target.value)}} /> 
+        </div>
+        <div className='col-3'>
+        <input className='form-control'  name="order" type='number' onChange={e => {setOrder(Number(e.target.value))}} />
+        </div>
+      </div>
+      <div className='row mt-1 mb-1'>
+        <div className='col-9'>
+          <input className='form-control' name="url" placeholder='http://test.com' onChange={e => {setUrl(e.target.value)}} />
+        </div>
+        <div className='col-3'>
+        <button className='btn btn-success'><i className='bi bi-bookmark-plus'></i> Add</button>
+        </div>
+      </div>
 
       <table className="table">
         <thead>
