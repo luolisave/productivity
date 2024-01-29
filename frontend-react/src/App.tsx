@@ -56,6 +56,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/bookmarks/:type_surfix" element={<Bookmarks />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/note/:id" element={<Note />} />
           {/* <Route path="/tests" element={<Tests />} /> */}

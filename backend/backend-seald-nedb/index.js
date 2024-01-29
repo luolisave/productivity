@@ -89,12 +89,39 @@ app.post('/atom', async function (req, res) {
           // console.log('-----create');  
           res.send({status: 1, info: "record created.", record: newDoc});
         }
-
         
       } catch (error) {
         res.send({status: 0, info: "something wrong while inserting record to database.", type, key}); 
       }
   }
+});
+
+
+app.delete('/atom', async function (req, res) {
+  if (
+    req.query.type && req.query.type !== '' &&
+    req.query.key && req.query.key !== '' 
+  ){
+    const type = req.query.type;
+    const key = req.query.key;
+    try {
+      const numRemoved = await db.removeAsync({ type, key }, { multi: true }); 
+      console.log('delete numRemoved = ', numRemoved);
+      res.send({status:1, info:`deleted ${numRemoved} record(s) successfully`, numRemoved});
+      // if (docs && docs.length) {
+      //   let myData = docs[docs.length-1].record;
+      //   res.send({status:1, info:'get record successfully', record: myData});
+      // } else {
+      //   res.send({status: 0, info: "no record for such type and key", type, key});
+      // }
+    } catch (error) {
+      res.send({status: 0, info: "something wrong while DELETE record from database.", type, key});
+    }
+      
+  } else {
+      res.send({status:0, info:'type and key cannot be undefined!'});
+  }
+  
 });
 
 app.listen(2024)

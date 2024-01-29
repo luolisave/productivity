@@ -1,17 +1,3 @@
-{"type":"bookmark","key":"my_data_key1","record":{"title":"001","url":"https://google.com","order":101},"_id":"C2xZUpjLBJOPmWjI"}
-{"type":"bookmark","key":"my_data_key_test2","record":{"title":"test2 order=-1","url":"https://test.com","order":-1},"_id":"TyYLWLM9ZEnTpNay"}
-{"type":"bookmark","key":"my_data_key","record":{"title":"test1 order=-1","url":"https://test.com","order":-1},"_id":"bU3EPgC11c38aqju"}
-{"type":"bookmark","key":"my_data_key2","record":{"title":"002","url":"https://bing.com","order":102},"_id":"eEKjlbOH8PwAQh9E"}
-{"type":"bookmark","key":"my_data_key4","record":{"title":"004","url":"https://youtube.com","order":103},"_id":"llS1u47F5nTmZnLn"}
-{"type":"bookmark","key":"my_data_key3","record":{"title":"003","url":"https://bilibili.com","order":104},"_id":"nValC3RJtdxpMf81"}
-{"type":"bookmark","key":"bookmark_6991174023","record":{"title":"test","url":"http://dsaf.com","order":111},"_id":"Q495kSxMKHuqcYVm"}
-{"type":"bookmark","key":"bookmark_98208456047","record":{"title":"my","url":"http://my.test","order":109},"_id":"S8K2bxojomX5uZly"}
-{"type":"bookmark","key":"bookmark_45415186958","record":{"title":"my","url":"http://my.test","order":109},"_id":"7jQzlYQJwAW4b80V"}
-{"type":"bookmark","key":"bookmark_74545466676","record":{"title":"yyyyyy","url":"yyyyyyy","order":5},"_id":"UJLUXY31xA5I69lG"}
-{"type":"bookmark","key":"bookmark_35262945575","record":{"title":"yyyyyydd","url":"yyyyyyy","order":5},"_id":"Pqzuxa8w82Lsm6ap"}
-{"type":"bookmark","key":"bookmark_33703371268","record":{"title":"yyyyyydd","url":"yyyyyyy","order":5},"_id":"PrV7gw7dMJZ8Y1fJ"}
-{"type":"bookmark","key":"bookmark_66166730474","record":{"title":"yyyyyydd","url":"yyyyyyy","order":5},"_id":"hjab4o9zVlEwB74P"}
-{"type":"bookmark","key":"bookmark_84072138746","record":{"title":"yyyyyydd","url":"yyyyyyy","order":5},"_id":"6vpkyQPIPitBcCxN"}
-{"type":"bookmark","key":"bookmark_80937751447","record":{"title":"yyytttt","url":"yyyyyyye","order":5},"_id":"2tuI69rKTceaUp2C"}
-{"type":"bookmark","key":"bookmark_58609325345","record":{"title":"http://asf.yyyyyyye.cn","url":"http://asf.yyyyyyye.cn","order":5},"_id":"5fVtORo33lEZZHhA"}
-{"type":"bookmark","key":"bookmark_16075818991","record":{"title":"http://asf.yyyyyyydddddddddddddddddddddddddddddddddddddddddddddddddddddde.cn","url":"http://asf.yyyyyyydddddddddddddddddddddddddddddddddddddddddddddddddddddde.cn","order":5},"_id":"1ceS8s84kYK26TR9"}
+{"type":"bookmark_ng","key":"bk38923182270","record":{"title":"saf","url":"test","order":0},"_id":"JqkLa6tghDybhwpV"}
+{"type":"bookmark","key":"bk41710387409","record":{"title":"dsaff","url":"dsaf/dsaf","order":0},"_id":"qYzTfVBK6jMiWX9I"}
+{"type":"bookmark","key":"bk25304559108","record":{"title":"Angular","url":"/#/bookmarks/ng","order":101},"_id":"u2EYDdibPU2pnElD"}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { BACKEND_IP, BACKEND_PORT } from './../../config.const';
 
 import './Bookmarks.css';
+import { useParams } from 'react-router';
 
 interface Bookmark{
   _id: string;
@@ -29,6 +30,9 @@ function sortBookmarkRecords(records: Bookmark[]): Bookmark[] {
 }
 
 function Bookmarks() {
+  const { type_surfix } = useParams();
+  const bookmarkType = 'bookmark' + (type_surfix ? '_' + type_surfix : '')
+  // console.log('Bookmarks.tsx  type_surfix =', type_surfix, ' bookmarkType=',bookmarkType);
   let initLoadRef = useRef(true);
   let [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   let [title, setTitle] = useState('');
@@ -38,7 +42,7 @@ function Bookmarks() {
   useEffect(()=>{
     if (initLoadRef.current) { // onl run once when component initial loads (not second time load)
       initLoadRef.current = false;
-      Axios.get(`${BACKEND_IP}:${BACKEND_PORT}/atom/list?type=bookmark`).then((res)=> {
+      Axios.get(`${BACKEND_IP}:${BACKEND_PORT}/atom/list?type=${bookmarkType}`).then((res)=> {
         // console.log(res);
         const records = res.data.records;
         
@@ -51,28 +55,55 @@ function Bookmarks() {
   let disableSaveBtn = useRef(false);
   function saveBookmark() {
     console.log('saveBookmark()...');
-    disableSaveBtn.current = true;
-    Axios.post(
-      `${BACKEND_IP}:${BACKEND_PORT}/atom?type=bookmark&key=bookmark_${Math.floor(Math.random() * 99999999999)}`,
-      {
-        title: title ? title: url,
-        url,
-        order
-      })
-      .then((res)=> {
-        console.log(res);
-        const record = res.data.record;
-        setBookmarks(preMarks => {
-          return [record, ...preMarks]
-        });
-        setTimeout(() => {
-          disableSaveBtn.current = false;
-        }, 100);
-    });
+    if(url && url !== '') {
+      disableSaveBtn.current = true;
+      Axios.post(                                                    // todo: use uuid instead of this random thing.
+        `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=bk${Math.floor(Math.random() * 99999999999)}`,
+        {
+          title: title ? title: url,
+          url,
+          order
+        })
+        .then((res)=> {
+          console.log(res);
+          const record = res.data.record;
+          setBookmarks(preMarks => {
+            return [record, ...preMarks]
+          });
+          setTimeout(() => { // this is a trick to disable Add btn until user change anything
+            disableSaveBtn.current = false;
+          }, 100);
+      });
+    } else {
+      alert('URL cannot be empty!');
+    }
+    
   }
 
-  function deleteBookmarkRecord(){
-
+  function deleteBookmarkRecord(key: string, title=''){
+    console.log('deleteBookmarkRecord().....');
+    const cfm = confirm(`Delete ${title} \n (key = ${key}) ?`);
+    console.log('dsaf');
+    if(cfm) {
+      Axios.delete(`${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${key}`)
+      .then(res => {
+         console.log(' delete ....', res.data)
+         if(res.data && res.data.status === 1 && res.data.numRemoved > 0) {
+           console.log('delete successfully!');
+           setBookmarks(bookmarks.filter(item=>item.key !== key));
+         } else {
+           alert('delete error!');
+         }
+      })
+      .catch(function (error) {
+       if (error.response) {}
+       else if (error.request) {}
+       else {}
+       console.log(error.config);
+       alert('error when call delete function.');
+      }); 
+    }
+    
   }
 
   return (
@@ -99,12 +130,14 @@ function Bookmarks() {
       {
         bookmarks.map((item, index)=>{
           return <div className='row pt-1 pb-1' style={{borderBottom: '1px solid #CCC'}} key={item.key}>
-            <div className='col-9' style={{overflow:'hidden'}} ><a target='_blank' className='bookmark-link' title={item.record.url} href={item.record.url}>{item.record.title}</a></div>
+            <div className='col-9' style={{overflow:'hidden'}} >
+              <a target='_blank' className='bookmark-link' title={item.record.url + ' (order# ' + item.record.order + ')'} href={item.record.url}>{item.record.title}</a>
+            </div>
             <div className='col-3'>
               <div className='bookmark-btn-div'>
                 <button className='btn btn-primary'><i className='bi bi-brush'></i></button>
                 &nbsp;
-                <button className='btn btn-danger' onClick={deleteBookmarkRecord}><i className='bi bi-trash'></i></button>
+                <button className='btn btn-danger' title={item.key} onClick={()=>{deleteBookmarkRecord(item.key, item.record?.title)}}><i className='bi bi-trash'></i></button>
               </div>
             </div>
           </div>
