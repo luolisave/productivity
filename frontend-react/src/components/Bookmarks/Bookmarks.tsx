@@ -1,6 +1,8 @@
 import Axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 
+import { BACKEND_IP, BACKEND_PORT } from './../../config.const';
+
 import './Bookmarks.css';
 
 interface Bookmark{
@@ -21,9 +23,18 @@ function Bookmarks() {
   useEffect(()=>{
     if (initLoadRef.current) { // onl run once when component initial loads (not second time load)
       initLoadRef.current = false;
-      Axios.get("http://127.0.0.1:2024/atom/list?type=bookmark").then((res)=> {
+      Axios.get(`${BACKEND_IP}:${BACKEND_PORT}/atom/list?type=bookmark`).then((res)=> {
         console.log(res.data.records);
-        setBookmarks(res.data.records);
+        const records = res.data.records;
+        let sortedRecords = records.sort((a: Bookmark, b: Bookmark)=>{
+          if (a.record.order < b.record.order) {
+            return -1
+          } else {
+            return 1
+          }
+        });
+
+        setBookmarks(sortedRecords);
       });
     }
     
