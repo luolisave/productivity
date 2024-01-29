@@ -2,11 +2,9 @@
     width: 99%;
   }
   .bookmark-btn-div {
-    width: 130px;
+    width: 100px;
+    float: right;
   }
   .bookmark-link {
     font-size: 24px;
   }
-.bookmakr-float-right {
-  float: right;
-}
