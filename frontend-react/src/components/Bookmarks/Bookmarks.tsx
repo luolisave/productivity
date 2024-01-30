@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, MouseEvent } from 'react';
 
 import { BACKEND_IP, BACKEND_PORT } from './../../config.const';
 
@@ -118,12 +118,17 @@ function Bookmarks() {
     
   }
 
-  function editBtnAction(item: Bookmark) {
-    console.log('editBtnAction()...', item)
+  function editBtnAction(event: MouseEvent, item: Bookmark) {
+    console.log('editBtnAction()...', item);
     setTitle(item.record.title);
     setOrder(item.record.order);
     setUrl(item.record.url);
     recordKey.current = item.key;
+    window.scrollTo({
+      top: 32,
+      left: 0,
+      behavior: "smooth",
+    });
   }
 
   return (
@@ -149,13 +154,13 @@ function Bookmarks() {
       <div className='mt-3 container-fluid'>
       {
         bookmarks.map((item, index)=>{
-          return <div className='row pt-1 pb-1' style={{borderBottom: '1px solid #CCC'}} key={item.key}>
+          return <div className='row pt-1 pb-1' style={{borderBottom: '1px solid #CCC', backgroundColor: (recordKey.current === item.key) ? '#EB3' : undefined}} key={item.key}>
             <div className='col-9' style={{overflow:'hidden'}} >
               <a target='_blank' className='bookmark-link' title={item.record.url + ' (order# ' + item.record.order + ')'} href={item.record.url}>{item.record.title}</a>
             </div>
             <div className='col-3'>
               <div className='bookmark-btn-div'>
-                <button className='btn btn-primary' onClick={()=>{editBtnAction(item)}}><i className='bi bi-brush'></i></button>
+                <button className='btn btn-primary' onClick={(e)=>{editBtnAction(e, item)}}><i className='bi bi-brush'></i></button>
                 &nbsp;
                 <button className='btn btn-danger' title={item.key} onClick={()=>{deleteBookmarkRecord(item.key, item.record?.title)}}><i className='bi bi-trash'></i></button>
               </div>
