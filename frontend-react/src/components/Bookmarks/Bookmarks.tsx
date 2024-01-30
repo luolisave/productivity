@@ -2,6 +2,7 @@ import Axios from 'axios';
 import { useEffect, useRef, useState, MouseEvent } from 'react';
 
 import { BACKEND_IP, BACKEND_PORT } from './../../config.const';
+import { randomString } from '../../utility/str'
 
 import './Bookmarks.css';
 import { useParams } from 'react-router';
@@ -59,8 +60,8 @@ function Bookmarks() {
     if(url && url !== '') {
       disableSaveBtn.current = true;
 
-      const postUrl = !recordKey.current ?                              // todo: use uuid instead of this random thing.
-          `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=bk${Math.floor(Math.random() * 99999999999)}` :
+      const postUrl = !recordKey.current ?                              
+          `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${randomString(32)}` :
           `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${recordKey.current}`;
       Axios.post(                                                    
         postUrl,
