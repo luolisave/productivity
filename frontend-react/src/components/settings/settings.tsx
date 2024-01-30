@@ -9,6 +9,8 @@ function Settings() {
 
       <strong>Default: {BACKEND_IP}:{BACKEND_PORT}</strong>
 
+      <hr />
+      <h2>API Configuration:</h2>
       <div className='mt-3 container-fluid'>
         <div className='row mt-1 mb-1'>
           <div className='col-12'>
@@ -24,6 +26,9 @@ function Settings() {
           </div>
         </div>
       </div>
+
+      <hr />
+      
     </>
   );
 }
