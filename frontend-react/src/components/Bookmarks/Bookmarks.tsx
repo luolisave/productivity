@@ -135,6 +135,8 @@ function Bookmarks() {
     <>
       <h1>Bookmarks</h1>
 
+
+    <div className='p-1' style={{backgroundColor: recordKey.current ? '#EB3' : undefined}}>
       <div className='row mt-1 mb-1'>
         <div className='col-9'>
         <input className='form-control' value={title} name="title" placeholder='Title' onChange={e => {setTitle(e.target.value)}} /> 
@@ -151,17 +153,21 @@ function Bookmarks() {
         <button className='btn btn-success' disabled={disableSaveBtn.current} onClick={saveBookmark}><i className='bi bi-bookmark-plus'></i> {recordKey.current ? 'Update' : 'Create'}</button>
         </div>
       </div>
+    </div>
+      
+
+
       <div className='mt-3 container-fluid'>
       {
         bookmarks.map((item, index)=>{
           return <div className='row pt-1 pb-1' style={{borderBottom: '1px solid #CCC', backgroundColor: (recordKey.current === item.key) ? '#EB3' : undefined}} key={item.key}>
             <div className='col-9' style={{overflow:'hidden'}} >
-              <a target='_blank' className='bookmark-link' title={item.record.url + ' (order# ' + item.record.order + ')'} href={item.record.url}>{item.record.title}</a>
+              <a target={ item.record.url.startsWith("http") ? '_blank' : undefined} className='bookmark-link' title={item.record.url + ' (order# ' + item.record.order + ')'} href={item.record.url}>{item.record.title}</a>
             </div>
             <div className='col-3'>
               <div className='bookmark-btn-div'>
                 <button className='btn btn-primary' onClick={(e)=>{editBtnAction(e, item)}}><i className='bi bi-brush'></i></button>
-                &nbsp;
+                &nbsp; &nbsp;
                 <button className='btn btn-danger' title={item.key} onClick={()=>{deleteBookmarkRecord(item.key, item.record?.title)}}><i className='bi bi-trash'></i></button>
               </div>
             </div>
