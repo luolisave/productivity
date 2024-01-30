@@ -44,7 +44,7 @@ function Bookmarks() {
   useEffect(()=>{
     if (initLoadRef.current) { // onl run once when component initial loads (not second time load)
       initLoadRef.current = false;
-      Axios.get(`${BACKEND_IP}:${BACKEND_PORT}/atom/list?type=${bookmarkType}`).then((res)=> {
+      Axios.get(`//${BACKEND_IP}:${BACKEND_PORT}/atom/list?type=${bookmarkType}`).then((res)=> {
         // console.log(res);
         const records = res.data.records;
         
@@ -61,8 +61,8 @@ function Bookmarks() {
       disableSaveBtn.current = true;
 
       const postUrl = !recordKey.current ?                              
-          `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${randomString(32)}` :
-          `${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${recordKey.current}`;
+          `//${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${randomString(32)}` :
+          `//${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${recordKey.current}`;
       Axios.post(                                                    
         postUrl,
         {
@@ -98,7 +98,7 @@ function Bookmarks() {
     const cfm = confirm(`Delete ${title} \n (key = ${key}) ?`);
     console.log('dsaf');
     if(cfm) {
-      Axios.delete(`${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${key}`)
+      Axios.delete(`//${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${key}`)
       .then(res => {
          console.log(' delete ....', res.data)
          if(res.data && res.data.status === 1 && res.data.numRemoved > 0) {

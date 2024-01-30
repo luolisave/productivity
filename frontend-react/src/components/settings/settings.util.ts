@@ -1,0 +1,1 @@
+import {BACKEND_IP, BACKEND_PORT}  from '../../config.const';
