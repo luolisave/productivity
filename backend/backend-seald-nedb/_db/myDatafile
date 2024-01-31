@@ -10,3 +10,11 @@
 {"type":"bookmark","key":"7g7jo76h1vllqat65ux9hkjxcqr1u639","record":{"title":"MCU","url":"/mcu","order":105},"_id":"219XWGL4lrC1nGZT"}
 {"type":"bookmark","key":"7g7jo76h1vllqat65ux9hkjxcqr1u639","record":{"title":"MCU","url":"bookmarks/mcu","order":105},"_id":"219XWGL4lrC1nGZT"}
 {"type":"bookmark","key":"7g7jo76h1vllqat65ux9hkjxcqr1u639","record":{"title":"MCU","url":"/bookmarks/mcu","order":105},"_id":"219XWGL4lrC1nGZT"}
+{"type":"bookmark","key":"7g7jo76h1vllqat65ux9hkjxcqr1u639","record":{"title":"MCU","url":"bookmarks/mcu","order":105},"_id":"219XWGL4lrC1nGZT"}
+{"type":"note","key":"123","record":{"note":"fdsaf"},"_id":"AODJvihQVpu1rh55"}
+{"type":"bookmark","key":"1hylm78bgbawfzekz6c29gqd6v7vtcsr","record":{"title":"dsf","url":"fdsaf","order":0},"_id":"wNr4u6YkGjXyBT1k"}
+{"$$deleted":true,"_id":"wNr4u6YkGjXyBT1k"}
+{"type":"note","key":"123","record":{"note":"fdsaf"},"_id":"AODJvihQVpu1rh55"}
+{"type":"note","key":"123","record":{"note":"fdsaffdsfuuuuuuuuuuuu"},"_id":"AODJvihQVpu1rh55"}
+{"type":"note","key":"1234","record":{"note":"fdsaf"},"_id":"F2j3BfYUzlSOpTrR"}
+{"type":"note","key":"1234","record":{"note":"fdsafuuuuuuuuuuuuuuu000000000000000"},"_id":"F2j3BfYUzlSOpTrR"}
