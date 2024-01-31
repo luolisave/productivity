@@ -7,6 +7,8 @@ import Axios from "axios";
 function Note() {
   const featureType = 'note';
   const apiIpPort = getApiIpPort();
+  const initLoadRef = useRef(true);
+  const disableSaveBtn = useRef(false);
   const { id } = useParams();
   const [note, setNote] = useState('');
 
@@ -16,7 +18,7 @@ function Note() {
   // console.log("n =", n);
 
 
-  let initLoadRef = useRef(true);
+  
   useEffect(()=>{
     if (initLoadRef.current) { // onl run once when component initial loads (not second time load)
       initLoadRef.current = false;
@@ -25,13 +27,19 @@ function Note() {
         const record = res.data.record;
         console.log(record)
         setNote(record?.note);
-      });
+      }).catch(function (error) {
+        if (error.response) {}
+        else if (error.request) {}
+        else {}
+        console.log(error.config);
+        alert('error when call GET function.');
+     });
     }
     
   },[]);
 
   // save data to DB
-  let disableSaveBtn = useRef(false);
+  
   function save() {
     console.log('save()...');
     disableSaveBtn.current = true;
@@ -43,14 +51,20 @@ function Note() {
       {
         note
       })
-      .then((res)=> {
-        console.log(res);
-        // todo: notify user create/update success.
-        
+      .then((res)=> {       
+        setNote((_) => {
+          return res.data.record.record.note;
+        })
         setTimeout(() => { // this is a trick to disable Add btn until user change anything
           disableSaveBtn.current = false;
         }, 100);
-    });
+      }).catch(function (error) {
+        if (error.response) {}
+        else if (error.request) {}
+        else {}
+        console.log(error.config);
+        alert('error when call create/update function.');
+     });
 
     
   }
@@ -63,6 +77,7 @@ function Note() {
           className="btn btn-primary"
           style={{float: 'right'}}
           onClick={()=>{save()}}
+          disabled={disableSaveBtn.current}
         >Save Note</button>
       </h1>
       <div className="pt-2">
