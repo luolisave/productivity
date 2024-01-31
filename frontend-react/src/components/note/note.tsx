@@ -8,9 +8,8 @@ function Note() {
   const featureType = 'note';
   const apiIpPort = getApiIpPort();
   const initLoadRef = useRef(true);
-  const disableSaveBtn = useRef(false);
   const { id } = useParams();
-  const [note, setNote] = useState('');
+  let [note, setNote] = useState('');
 
   // below block unused yet, only for learning and testing
   const [searchParams, setSearchParams] = useSearchParams(); // useSearchParams({ n: "dfs" });
@@ -42,7 +41,6 @@ function Note() {
   
   function save() {
     console.log('save()...');
-    disableSaveBtn.current = true;
 
     const postUrl = `${apiIpPort}/atom?type=${featureType}&key=${id}`;
     console.log('note = ', note);
@@ -51,13 +49,8 @@ function Note() {
       {
         note
       })
-      .then((res)=> {       
-        setNote((_) => {
-          return res.data.record.record.note;
-        })
-        setTimeout(() => { // this is a trick to disable Add btn until user change anything
-          disableSaveBtn.current = false;
-        }, 100);
+      .then((res)=> {    
+        setNote(res.data.record.record.note);
       }).catch(function (error) {
         if (error.response) {}
         else if (error.request) {}
@@ -76,9 +69,8 @@ function Note() {
         <button 
           className="btn btn-primary"
           style={{float: 'right'}}
-          onClick={()=>{save()}}
-          disabled={disableSaveBtn.current}
-        >Save Note</button>
+          onClick={save}
+        >Save</button>
       </h1>
       <div className="pt-2">
         <textarea 
