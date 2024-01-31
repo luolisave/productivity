@@ -4,3 +4,9 @@
 {"type":"bookmark","key":"bk13510867987","record":{"title":"React JS","url":"bookmarks/react","order":0},"_id":"npfrwRqOnKSijhm7"}
 {"type":"bookmark_react","key":"bk15254484983","record":{"title":"[Youtube] React Hooks","url":"https://www.youtube.com/watch?v=O6P86uwfdR0&list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h","order":102},"_id":"w2XZSSRss9a2tdG0"}
 {"type":"bookmark_react","key":"bk50370292072","record":{"title":"[w3schools] React Tutorial","url":"[Tutorial] https://w3schools.com/react/react_usecontext.asp","order":0},"_id":"E5us0v5MBJZyk91v"}
+{"type":"bookmark","key":"g9j5lbsel0vy11q7hbdiagx7tllh8lc5","record":{"title":"tet","url":"test","order":0},"_id":"uhcfll7g3XB99FcO"}
+{"type":"bookmark","key":"g9j5lbsel0vy11q7hbdiagx7tllh8lc5","record":{"title":"tet test","url":"test","order":0},"_id":"uhcfll7g3XB99FcO"}
+{"$$deleted":true,"_id":"uhcfll7g3XB99FcO"}
+{"type":"bookmark","key":"7g7jo76h1vllqat65ux9hkjxcqr1u639","record":{"title":"MCU","url":"/mcu","order":105},"_id":"219XWGL4lrC1nGZT"}
+{"type":"bookmark","key":"7g7jo76h1vllqat65ux9hkjxcqr1u639","record":{"title":"MCU","url":"bookmarks/mcu","order":105},"_id":"219XWGL4lrC1nGZT"}
+{"type":"bookmark","key":"7g7jo76h1vllqat65ux9hkjxcqr1u639","record":{"title":"MCU","url":"/bookmarks/mcu","order":105},"_id":"219XWGL4lrC1nGZT"}

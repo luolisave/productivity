@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, MouseEvent } from 'react';
 
 import { BACKEND_IP, BACKEND_PORT } from './../../config.const';
 import { randomString } from '../../utility/str'
+import { getApiIpPort } from '../settings/settings.util';
 
 import './Bookmarks.css';
 import { useParams } from 'react-router';
@@ -32,7 +33,7 @@ function sortBookmarkRecords(records: Bookmark[]): Bookmark[] {
 
 function Bookmarks() {
   const { type_surfix } = useParams();
-  const bookmarkType = 'bookmark' + (type_surfix ? '_' + type_surfix : '')
+  const bookmarkType = 'bookmark' + (type_surfix ? '_' + type_surfix : '');
   // console.log('Bookmarks.tsx  type_surfix =', type_surfix, ' bookmarkType=',bookmarkType);
   let initLoadRef = useRef(true);
   let [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
@@ -41,10 +42,12 @@ function Bookmarks() {
   let [url, setUrl] = useState('');
   let recordKey = useRef('');
 
+  const apiIpPort = getApiIpPort();
+
   useEffect(()=>{
     if (initLoadRef.current) { // onl run once when component initial loads (not second time load)
       initLoadRef.current = false;
-      Axios.get(`//${BACKEND_IP}:${BACKEND_PORT}/atom/list?type=${bookmarkType}`).then((res)=> {
+      Axios.get(`${apiIpPort}/atom/list?type=${bookmarkType}`).then((res)=> {
         // console.log(res);
         const records = res.data.records;
         
@@ -61,8 +64,8 @@ function Bookmarks() {
       disableSaveBtn.current = true;
 
       const postUrl = !recordKey.current ?                              
-          `//${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${randomString(32)}` :
-          `//${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${recordKey.current}`;
+          `${apiIpPort}/atom?type=${bookmarkType}&key=${randomString(32)}` :
+          `${apiIpPort}/atom?type=${bookmarkType}&key=${recordKey.current}`;
       Axios.post(                                                    
         postUrl,
         {
@@ -98,7 +101,7 @@ function Bookmarks() {
     const cfm = confirm(`Delete ${title} \n (key = ${key}) ?`);
     console.log('dsaf');
     if(cfm) {
-      Axios.delete(`//${BACKEND_IP}:${BACKEND_PORT}/atom?type=${bookmarkType}&key=${key}`)
+      Axios.delete(`${apiIpPort}/atom?type=${bookmarkType}&key=${key}`)
       .then(res => {
          console.log(' delete ....', res.data)
          if(res.data && res.data.status === 1 && res.data.numRemoved > 0) {
@@ -163,6 +166,7 @@ function Bookmarks() {
         bookmarks.map((item, index)=>{
           return <div className='row pt-1 pb-1' style={{borderBottom: '1px solid #CCC', backgroundColor: (recordKey.current === item.key) ? '#EB3' : undefined}} key={item.key}>
             <div className='col-9' style={{overflow:'hidden'}} >
+              {/* todo: relative link shoud not refresh the page. */}
               <a target={ item.record.url.startsWith("http") ? '_blank' : undefined} className='bookmark-link' title={item.record.url + ' (order# ' + item.record.order + ')'} href={item.record.url}>{item.record.title}</a>
             </div>
             <div className='col-3'>

@@ -11,8 +11,13 @@ function Note() {
 
   return (
     <>
-      <h1>Note # {id}</h1>
-      <p>n = {n}</p>
+      <h1>
+        Note ({id})
+        <button className="btn btn-primary" style={{float: 'right'}}>Save Note</button>
+      </h1>
+      <div className="pt-2">
+        <textarea className="form-control" style={{minHeight: '480px'}}></textarea>
+      </div>
     </>
   );
 }
