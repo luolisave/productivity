@@ -23,6 +23,9 @@ function Home() {
           <Link to="/note/123">Note 123</Link>
         </p>
         <p>
+          <Link to="/note/1234">Note 1234</Link>
+        </p>
+        <p>
           <Link to="/note/123?n=abc">Note 123, search abc</Link>
         </p>
       </div>

@@ -1,14 +1,16 @@
+import Axios from "axios";
+
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import { getApiIpPort } from "../settings/settings.util";
-import Axios from "axios";
 
 function Note() {
   const featureType = 'note';
   const apiIpPort = getApiIpPort();
   const initLoadRef = useRef(true);
   const { id } = useParams();
+  let [title, setTitle] = useState('');
   let [note, setNote] = useState('');
 
   // below block unused yet, only for learning and testing
@@ -26,6 +28,7 @@ function Note() {
         const record = res.data.record;
         console.log(record)
         setNote(record?.note);
+        setTitle(record?.title);
       }).catch(function (error) {
         if (error.response) {}
         else if (error.request) {}
@@ -47,7 +50,9 @@ function Note() {
     Axios.post(                                                    
       postUrl,
       {
-        note
+        title,
+        note,
+        order: -1
       })
       .then((res)=> {    
         setNote(res.data.record.record.note);
@@ -72,6 +77,14 @@ function Note() {
           onClick={save}
         >Save</button>
       </h1>
+      <div className="pt-2">
+        <input 
+          className="form-control"
+          
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+      </div>
       <div className="pt-2">
         <textarea 
           className="form-control"
