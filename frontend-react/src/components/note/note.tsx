@@ -70,7 +70,7 @@ function Note() {
   return (
     <>
       <h1>
-        Note ({id})
+        Note
         <button 
           className="btn btn-primary"
           style={{float: 'right'}}
