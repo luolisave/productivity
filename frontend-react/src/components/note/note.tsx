@@ -25,10 +25,10 @@ function Note() {
       initLoadRef.current = false;
       Axios.get(`${apiIpPort}/atom?type=${featureType}&key=${id}`).then((res)=> {
         // console.log(res);
-        const record = res.data.record;
-        console.log(record)
-        setNote(record?.note);
-        setTitle(record?.title);
+        const record = res.data.record ? res.data.record : {};
+        console.log('initial get. record =', record)
+        setNote(record?.note ? record?.note : '');
+        setTitle(record?.title ? record?.title : '');
       }).catch(function (error) {
         if (error.response) {}
         else if (error.request) {}
