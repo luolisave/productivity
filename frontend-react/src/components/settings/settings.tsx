@@ -1,4 +1,4 @@
-import useLocalStorage from '../../utility/useLocalstorage.hook';
+import useLocalStorage from './../../utility/useLocalStorage.hook';
 import { API_CONFIG, BACKEND_IP, BACKEND_PORT } from './../../config.const'; // default value
 
 function Settings() {
