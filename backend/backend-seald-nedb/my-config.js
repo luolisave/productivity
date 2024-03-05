@@ -1,5 +1,5 @@
 module.exports = {
-    dbName: '_db/myDatafile',
+    dbName: '_db/myProdDatafile',
     getDbName: function () {
       // whatever
       return this.dbName;
