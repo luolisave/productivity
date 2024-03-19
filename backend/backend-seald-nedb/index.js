@@ -1,8 +1,9 @@
 const express = require('express')
 var cors = require('cors')
+var myConfig = require('./my-config');
+
+
 const app = express()
-
-
 app.use(cors())
 app.use(express.json())
 app.use(express.static('public'));
@@ -10,7 +11,7 @@ app.use(express.static('public'));
 // https://github.com/seald/nedb
 // Type 3: Persistent datastore with automatic loading
 const Datastore = require('@seald-io/nedb')
-const db = new Datastore({ filename: '_db/myDatafile', autoload: true }) // You can await db.autoloadPromise to catch a potential error when autoloading.
+const db = new Datastore({ filename: myConfig.dbName, autoload: true }) // You can await db.autoloadPromise to catch a potential error when autoloading.
 // You can issue commands right away
 
 
