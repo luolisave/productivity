@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
-import { NotesComponent } from '../notes/notes.component';
-import { NotesPlusComponent } from '../notes-plus/notes-plus.component';
-import { BookmarksComponent } from '../bookmarks/bookmarks.component';
-import { SettingsComponent } from '../settings/settings.component';
+import { HomeComponent } from './home/home.component';
+import { NotesComponent } from './notes/notes.component';
+import { NotesPlusComponent } from './notes-plus/notes-plus.component';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 export const routes: Routes = [
