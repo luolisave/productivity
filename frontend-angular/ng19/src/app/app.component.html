@@ -1,3 +1,13 @@
-<header>Header here</header>
-<router-outlet />
+<header>
+  <a [routerLink]="['/']"> Home </a>
+  <a [routerLink]="['/bookmarks']"> Bookmarks </a>
+  <a [routerLink]="['/notes']"> Notes </a>
+  <a [routerLink]="['/notes-plus']"> Notes Plus </a>
+  <a [routerLink]="['/settings']"> Settings </a>
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
 <footer>Footer here</footer>
