@@ -1,10 +1,34 @@
 <header>
   <div>
-    <a id="home-link" [routerLink]="['/']"> Home </a>
-    <a [routerLink]="['/bookmarks']"> Bookmarks </a>
-    <a [routerLink]="['/notes']"> Notes </a>
-    <a [routerLink]="['/notes-plus']"> Notes Plus </a>
-    <a [routerLink]="['/settings']"> Settings </a>
+    <a
+      id="home-link"
+      [routerLink]="['/']"
+      [routerLinkActive]="['top-route', 'active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Home
+    </a>
+    <a
+      [routerLink]="['/bookmarks']"
+      [routerLinkActive]="['top-route', 'active']"
+    >
+      Bookmarks
+    </a>
+    <a [routerLink]="['/notes']" [routerLinkActive]="['top-route', 'active']">
+      Notes
+    </a>
+    <a
+      [routerLink]="['/notes-plus']"
+      [routerLinkActive]="['top-route', 'active']"
+    >
+      Notes++
+    </a>
+    <a
+      [routerLink]="['/settings']"
+      [routerLinkActive]="['top-route', 'active']"
+    >
+      Settings
+    </a>
   </div>
 </header>
 

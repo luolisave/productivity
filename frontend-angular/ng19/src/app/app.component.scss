@@ -6,6 +6,11 @@
       padding-top: 7px;
       a {
         padding: 5px 10px;
+        color: blue;
+        text-decoration: none;
+        &.top-route.active {
+          color: red;
+        }
       }
     }
   }
