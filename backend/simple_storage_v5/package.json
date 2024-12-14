@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "lmdb": "^2.7.3",
-    "node-windows": "^1.0.0-beta.8"
+    "node-windows": "^1.0.0-beta.8",
+    "storage-s5": "file:"
   }
 }
