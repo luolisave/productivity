@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.21.2",
     "lmdb": "^2.7.3",
     "node-windows": "^1.0.0-beta.8",
     "storage-s5": "file:"
