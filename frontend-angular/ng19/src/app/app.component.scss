@@ -1,13 +1,16 @@
 :host {
   header {
+    height: 34px;
     background-color: antiquewhite;
-    a {
-      padding: 5px 10px;
+    div {
+      padding-top: 7px;
+      a {
+        padding: 5px 10px;
+      }
     }
   }
   main {
-    background-color: lightgray;
-    border: 1px solid green;
+    margin: 8px;
   }
   footer {
     background-color: antiquewhite;
