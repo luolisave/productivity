@@ -22,4 +22,8 @@ export class NotesService {
   saveNote(key: string, note: any) {
     return this.httpClient.post("http://localhost:3000/atom?type=note&key="+key , note);
   }
+
+  delNote(key: string) {
+    return this.httpClient.delete("http://localhost:3000/atom?type=note&key="+key);
+  }
 }

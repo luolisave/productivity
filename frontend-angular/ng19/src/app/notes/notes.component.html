@@ -1,7 +1,12 @@
 <h2>notes</h2>
 
-<ol>
-  <li *ngFor="let note of notes; let i = index">
-    <a [routerLink]="['/note', note?.key]">{{ note?.record?.title  }}</a>
-  </li>
-</ol>
+<div>
+  <table>
+    <tbody>
+      <tr *ngFor="let note of notes; let i = index">
+        <td width="200" height="30px"><a [routerLink]="['/note', note?.key]"><span>{{ note?.record?.title  }}</span></a></td>
+        <td><button *ngIf="i !== 0" (click)="deleteNote(note.key)">Del</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

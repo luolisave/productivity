@@ -20,11 +20,26 @@ export class NotesComponent {
     this.notesService = inject(NotesService);
   }
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    this.getNotes();
+  }
+
+  getNotes(): void {
     this.notesService.getNotes().subscribe( (data: any) => {
       this.notes = (data && data.records) ? data.records : [];
       console.log('this.notes = ', this.notes);
+    });
+  }
+
+  deleteNote(key: string) {
+    const question = confirm('Are you sure you want to delete this note?');
+    if (!question) {
+      return;
+    }
+    this.notesService.delNote(key).subscribe( (data: any) => {
+      console.log('!!!!data = ', data);
+      if (data && data.status == 1) {
+        this.getNotes()
+      }
     });
   }
 }

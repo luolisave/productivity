@@ -23,14 +23,11 @@ export class NoteComponent {
     this.notesService = inject(NotesService);
     this.route = inject(ActivatedRoute);
     this.key = this.route.snapshot.paramMap.get('key') || '';
-    console.log('key = ', this.key);
   }
 
   ngOnInit(): void {
     this.notesService.getNote(this.key).subscribe( (data: any) => {
-      this.note = (data && data.record) ? data.record : '';
-      // this.notes = (data && data.records) ? data.records : [];
-      console.log('this.note = ', this.note);
+      this.note = (data && data.record) ? data.record : {};
     });
   }
 
