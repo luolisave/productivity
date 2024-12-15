@@ -18,4 +18,8 @@ export class NotesService {
   getNote(key: string) {
     return this.httpClient.get("http://localhost:3000/atom?type=note&key="+key);
   }
+
+  saveNote(key: string, note: any) {
+    return this.httpClient.post("http://localhost:3000/atom?type=note&key="+key , note);
+  }
 }

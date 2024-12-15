@@ -34,12 +34,13 @@ export class NoteComponent {
     });
   }
 
-  // save(): void {
-  //   this.notesService.saveNote(this.key, this.note).subscribe( (data: any) => {
-  //     this.note = (data && data.record) ? data.record : '';
-  //     // this.notes = (data && data.records) ? data.records : [];
-  //     console.log('this.note = ', this.note);
-  //   });
-  // }
+  save(): void {
+    this.notesService.saveNote(this.key, this.note).subscribe( (data: any) => {
+      console.log('data = ', data);
+      if (data && data.record) {
+        alert('Note saved successfully!');
+      }
+    });
+  }
 
 }
