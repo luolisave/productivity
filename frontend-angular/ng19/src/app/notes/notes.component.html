@@ -1,1 +1,7 @@
-<p>notes works!</p>
+<h2>notes</h2>
+
+<ol>
+  <li *ngFor="let note of notes; let i = index">
+    <a [routerLink]="['/']">{{ note?.record?.title  }}</a>  ---  {{ note?.key  }}
+  </li>
+</ol>

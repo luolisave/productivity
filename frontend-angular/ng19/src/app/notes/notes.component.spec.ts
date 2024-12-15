@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { NotesComponent } from './notes.component';
 
@@ -8,7 +9,8 @@ describe('NotesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NotesComponent]
+      imports: [NotesComponent],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
 
