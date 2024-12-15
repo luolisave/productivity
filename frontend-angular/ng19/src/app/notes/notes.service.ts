@@ -14,4 +14,8 @@ export class NotesService {
   getNotes() {
     return this.httpClient.get("http://localhost:3000/atom/list?type=note");
   }
+
+  getNote(key: string) {
+    return this.httpClient.get("http://localhost:3000/atom?type=note&key="+key);
+  }
 }

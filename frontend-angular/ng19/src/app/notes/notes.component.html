@@ -2,6 +2,6 @@
 
 <ol>
   <li *ngFor="let note of notes; let i = index">
-    <a [routerLink]="['/']">{{ note?.record?.title  }}</a>  ---  {{ note?.key  }}
+    <a [routerLink]="['/note', note?.key]">{{ note?.record?.title  }}</a>
   </li>
 </ol>

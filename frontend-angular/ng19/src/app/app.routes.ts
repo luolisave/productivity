@@ -4,6 +4,7 @@ import { NotesComponent } from './notes/notes.component';
 import { NotesPlusComponent } from './notes-plus/notes-plus.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NoteComponent } from './notes/note/note.component';
 
 
 export const routes: Routes = [
@@ -15,7 +16,12 @@ export const routes: Routes = [
   {
     path: 'notes',
     component: NotesComponent,
-    title: 'Notes page',
+    title: 'Notes page - should view list of titles here',
+  },
+  {
+    path: 'note/:key',
+    component: NoteComponent,
+    title: 'Note page - should view/edit a single note here',
   },
   {
     path: 'notes-plus',
