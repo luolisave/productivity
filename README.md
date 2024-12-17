@@ -2,6 +2,10 @@
 
 Tools to improve my coding productivity.
 
+## add angular19 front-end
+
+under:  ./frontend-angular/ng19
+
 ## add react.js front-end
 
 Use vite and ts in react.js front-end.
