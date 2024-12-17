@@ -10,7 +10,7 @@ under:  ./frontend-angular/ng19
 
 Use vite and ts in react.js front-end.
 
-## add based backend v6
+## add seald-io/nedb based backend v6
 
 Simple API server uses new seald-io/nedb database.
 
